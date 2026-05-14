@@ -179,3 +179,25 @@ export function validateTaskStatusUpdateInput(
     },
   }
 }
+
+export function validateProjectUpdateInput(
+  input: unknown
+) {
+  const data = asObject(input)
+
+  if (!data) {
+    return { error: "Invalid request body" }
+  }
+
+  return {
+    data: {
+      name: data.name
+        ? String(data.name)
+        : undefined,
+
+      description: data.description
+        ? String(data.description)
+        : undefined,
+    },
+  }
+}
