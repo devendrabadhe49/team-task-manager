@@ -86,6 +86,28 @@ export function validateProjectCreateInput(input: unknown) {
   }
 }
 
+export function validateProjectUpdateInput(
+  input: unknown
+) {
+  const data = asObject(input)
+
+  if (!data) {
+    return { error: "Invalid request body" }
+  }
+
+  return {
+    data: {
+      name: data.name
+        ? String(data.name)
+        : undefined,
+
+      description: data.description
+        ? String(data.description)
+        : undefined,
+    },
+  }
+}
+
 export function validateProjectMembersInput(input: unknown) {
   const data = asObject(input)
 
@@ -176,28 +198,6 @@ export function validateTaskStatusUpdateInput(
   return {
     data: {
       status,
-    },
-  }
-}
-
-export function validateProjectUpdateInput(
-  input: unknown
-) {
-  const data = asObject(input)
-
-  if (!data) {
-    return { error: "Invalid request body" }
-  }
-
-  return {
-    data: {
-      name: data.name
-        ? String(data.name)
-        : undefined,
-
-      description: data.description
-        ? String(data.description)
-        : undefined,
     },
   }
 }
