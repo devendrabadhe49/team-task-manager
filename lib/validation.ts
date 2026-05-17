@@ -148,6 +148,9 @@ export function validateTaskCreateInput(input: unknown) {
         ? String(data.assignedToId)
         : null,
       projectId: String(data.projectId ?? ""),
+      dueDate: data.dueDate
+        ? String(data.dueDate)
+        : null,
     },
   }
 }
@@ -175,6 +178,10 @@ export function validateTaskUpdateInput(input: unknown) {
 
       assignedToId: data.assignedToId
         ? String(data.assignedToId)
+        : undefined,
+
+      dueDate: data.dueDate
+        ? String(data.dueDate)
         : undefined,
     },
   }
