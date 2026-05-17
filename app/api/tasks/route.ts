@@ -23,6 +23,7 @@ export async function GET(request: NextRequest) {
       taskScope(session),
     ]
 
+    
     if (projectId) {
       filters.push({ projectId })
     }
